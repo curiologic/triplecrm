@@ -41,6 +41,8 @@
        <form:input path="city" cssClass="w3-input w3-border"  />
         <label><b>State</b></label>
        <form:input path="State" cssClass="w3-input w3-border"  />
+        <label><b>Country</b></label>
+       <form:input path="State" cssClass="w3-input w3-border"  />
         <label><b>Postal Code</b></label>
        <form:input path="PostalCode" cssClass="w3-input w3-border" /> 
         <label><b>Phone Number</b></label>

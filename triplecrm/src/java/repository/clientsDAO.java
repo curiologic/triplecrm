@@ -24,18 +24,18 @@ public class clientsDAO {
         this.template = template;
     }
      public int save(clients client){
-        String sql = "INSERT INTO client (idclient,Name, Address, City,State,Country, PhoneNumber, Email, PostalCode, prospect, Email, Active, FormerClient, Comments)"
+        String sql = "INSERT INTO client (idclient,Name, Address, City, State, Country, PostalCode, PhoneNumber, Email,  prospect, Active, FormerClient, Comments)"
                +  " values(?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
-        Object[] values = {client.getIdclient(), client.getName(),client.getAddress(), client.getCity(), client.getPostalCode(), client.getProspect(), client.getPhoneNumber(), client.getEmail(), client.getActive(), client.getFormerClient(), client.getComments(), client.getState(), client.getCountry()};
+        Object[] values = {client.getIdclient(), client.getName(),client.getAddress(), client.getCity(),client.getState(),  client.getCountry(), client.getPostalCode(),  client.getPhoneNumber(), client.getEmail(), client.getProspect(), client.getActive(), client.getFormerClient(), client.getComments()};
 
         return template.update(sql,values);
     }
 
     public int update(clients client){
-        String sql = "UPDATE client SET idclient=?,Name=?, Address=?, City=?,State=?,Country=?, PhoneNumber=?, Email=?, PostalCode=?, prospect=?, Email=?, Active=?, FormerClient=?, Comments=?, WHERE idclients = ?";
+        String sql = "UPDATE client SET idclient=?,Name=?, Address=?, City=?, State=?, Country=?, PostalCode=?, PhoneNumber=?, Email=?, prospect=?, Email=?, Active=?, FormerClient=?, Comments=?, WHERE idclient = ?";
 
-        Object[] values = {client.getName(),client.getIdclient(),client.getCity(), client.getPostalCode(), client.getProspect(), client.getPhoneNumber(), client.getEmail(), client.getActive(), client.getFormerClient(), client.getComments(), client.getState(), client.getCountry(),};
+        Object[] values = {client.getIdclient(), client.getName(),client.getAddress(), client.getCity(),client.getState(),  client.getCountry(), client.getPostalCode(),  client.getPhoneNumber(), client.getEmail(), client.getProspect(), client.getActive(), client.getFormerClient(), client.getComments()};
 
         return template.update(sql,values);
     }

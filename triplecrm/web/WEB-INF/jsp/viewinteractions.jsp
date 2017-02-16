@@ -37,6 +37,11 @@
     <tr>
       <th>Title</th>
       <th>Client</th>
+      <th>Phone</th>
+      <th>Email</th>
+      <th>in Person</th>
+      <th>Conference Call</th>
+      <th>Time Of Contact</th>
       <th>Action</th>
     </tr>  
 

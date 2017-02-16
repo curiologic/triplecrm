@@ -29,7 +29,7 @@ import repository.interactionsDAO;
  */
 @Controller
 public class InteractionsController {
-     @Autowired
+  //   @Autowired
     interactionsDAO dao;
     
     @Autowired
@@ -47,11 +47,11 @@ public class InteractionsController {
     
     @RequestMapping("/interactions/interactionsform/{id}")
     public ModelAndView showformWithClient(@PathVariable int id){
-        clients client = cdao.getclientsById(id);
+      //  clients client = cdao.getclientsById(id);
         
         interactions interactions = new interactions();
         interactions.setIdclient(id);
-        interactions.setClient( client);
+     //   interactions.setClient( client);
         
        interactions.setClients(dao.getclientsMap());
         
@@ -76,15 +76,14 @@ public class InteractionsController {
     }
 
     @RequestMapping("/interactions/viewinteractions")
-    public ModelAndView viewalbum(HttpServletRequest request){
-        //List<Album> list = dao.getAlbumsList();
-        //return new ModelAndView("viewalbum","list",list);
+    public ModelAndView viewinteractions(HttpServletRequest request){
+     
         
         return this.viewinteractions(1, request);
     }
     
     @RequestMapping("/interactions/viewinteractions/{pageid}")
-    public ModelAndView viewalbum(@PathVariable int pageid, HttpServletRequest request){
+    public ModelAndView viewinteractions(@PathVariable int pageid, HttpServletRequest request){
         int total = 25;
         int start = 1;
         
@@ -155,9 +154,7 @@ public class InteractionsController {
         return new ModelAndView("redirect:/interactions/viewinteractions");
     }
 
-    private ModelAndView viewinteractions(int i, HttpServletRequest request) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+  
 }
 
 

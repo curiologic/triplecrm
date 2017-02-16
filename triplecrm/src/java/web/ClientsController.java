@@ -37,8 +37,8 @@ public class ClientsController {
     }
 
     @RequestMapping(value = "/clients/save", method = RequestMethod.POST)
-    public ModelAndView save(@ModelAttribute("clients") clients client, HttpServletRequest request){
-        int r = dao.save(client);
+    public ModelAndView save(@ModelAttribute("clients") clients clients, HttpServletRequest request){
+        int r = dao.save(clients);
         
         Message msg = null;
         if (r == 1) {
