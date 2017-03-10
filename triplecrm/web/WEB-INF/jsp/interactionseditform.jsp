@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ include file="theme/header.jsp" %> 
 <!DOCTYPE html>
 <html>
 <title>W3.CSS Template</title>
@@ -23,20 +24,46 @@
 
   <div class="w3-card-4">
     <div class="w3-container w3-blue">
-      <h2>Header</h2>
+      <h2>Interactions</h2>
     </div>
 
     <form:form method="POST" action="/triplecrm/interactions/editsave" cssClass="w3-container">
       <form:hidden path="id"  />
       
+       <div class="w3-padding-8">
+        <label><b>InteractionsID</b></label>
+        <form:input path="idinteractions" cssClass="w3-input w3-border"  />
+      </div>
+      
+      
       <div class="w3-padding-8">
-        <label><b>Title</b></label>
-        <form:input path="title" cssClass="w3-input w3-border"  />
+        <label><b>Time of Contact</b></label>
+        <form:input path="TimeOfContact" cssClass="w3-input w3-border"  />
       </div>
       
       <div class="w3-padding-8">
-        <label><b>Artist</b></label>
-        <form:select path="idclient" cssClass="w3-select w3-border" items="${command.clientss}" />
+        <label><b>Client</b></label>
+        <form:select path="idclient" cssClass="w3-select w3-border" items="${command.clients}" />
+      </div>
+      
+       <div class="w3-padding-8">
+        <label><b>Email</b></label>
+        <form:input path="email" cssClass="w3-input w3-border"  />
+      </div>
+      
+       <div class="w3-padding-8">
+        <label><b>Phone</b></label>
+        <form:input path="Phone" cssClass="w3-input w3-border"  />
+      </div>
+      
+       <div class="w3-padding-8">
+        <label><b>In Person</b></label>
+        <form:input path="inPerson" cssClass="w3-input w3-border"  />
+      </div
+      
+       <div class="w3-padding-8">
+        <label><b>Conference Call</b></label>
+        <form:input path="conferenceCall" cssClass="w3-input w3-border"  />
       </div>
       
       <div class="w3-padding-8">
@@ -46,3 +73,4 @@
     
   </div>
 </div>
+       <%@ include file="theme/footer.jsp" %>

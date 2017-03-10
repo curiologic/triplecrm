@@ -1,15 +1,8 @@
-<%-- 
-    Document   : header
-    Created on : Jan 31, 2017, 6:14:28 PM
-    Author     : xulix
---%>
-
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-  <title>Clients Manager</title>
+  <title>TripleCRM</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
@@ -20,8 +13,8 @@
 
     <!-- Top container -->
     <div class="w3-container w3-top w3-black w3-large w3-padding" style="z-index:4">
-      <button class="w3-btn w3-hide-large w3-padding-0 w3-hover-text-grey" onclick="w3_open();"><i class="fa fa-bars"></i> Â Menu</button>
-      <span class="w3-right">triplecrm</span>
+      <button class="w3-btn w3-hide-large w3-padding-0 w3-hover-text-grey" onclick="w3_open();"><i class="fa fa-bars"></i>  Menu</button>
+      <span class="w3-right">TripleCRM</span>
     </div>
 
     <!-- Sidenav/menu -->
@@ -45,35 +38,43 @@
       </div>
       <hr>
 
-      <a href="#" class="w3-padding-16 w3-hide-large w3-dark-grey w3-hover-black" onclick="w3_close()" title="close menu"><i class="fa fa-remove fa-fw"></i>Â  Close Menu</a>
-      <a href="<c:url value="/" />" class="w3-padding"><i class="fa fa-dashboard fa-fw"></i>Â  Dashboard</a>
+      <a href="#" class="w3-padding-16 w3-hide-large w3-dark-grey w3-hover-black" onclick="w3_close()" title="close menu"><i class="fa fa-remove fa-fw"></i>  Close Menu</a>
+      <a href="<c:url value="/" />" class="w3-padding"><i class="fa fa-dashboard fa-fw"></i>  Dashboard</a>
       
-      <sec:authorize access="hasRole('ROLE_ADMIN')">
+      <sec:authorize access="hasRole('ROLE_USER')">
       <div class="w3-dropdown-hover">
-        <a href="<c:url value="/clients/viewclients" />" class="w3-padding"><i class="fa fa-music fa-fw"></i>Â  Clients  <i class="fa fa-caret-down"></i></a>
+        <a href="<c:url value="/clients/viewclients" />" class="w3-padding"><i class="fa fa-music fa-fw"></i>  Clients  <i class="fa fa-caret-down"></i></a>
         <div class="w3-dropdown-content w3-white w3-card-4">
-          <a class="w3-padding w3-dark-grey" href="<c:url value="/clients/clientsform" />"><i class="fa fa-plus-square fa-fw"></i>Â  Add Client</a>
+          <a class="w3-padding w3-dark-grey" href="<c:url value="/clients/clientsform" />"><i class="fa fa-plus-square fa-fw"></i>  Add Client</a>
         </div>
       </div>
         
-     <%-- <div class="w3-dropdown-hover">
-        <a href="<c:url value="/album/viewalbum" />" class="w3-padding"><i class="fa fa-microphone fa-fw"></i>Â  Albums  <i class="fa fa-caret-down"></i></a>
+      <div class="w3-dropdown-hover">
+        <a href="<c:url value="/interactions/viewinteractions" />" class="w3-padding"><i class="fa fa-microphone fa-fw"></i>  Interactions  <i class="fa fa-caret-down"></i></a>
         <div class="w3-dropdown-content w3-white w3-card-4">
-          <a class="w3-padding w3-dark-grey" href="<c:url value="/album/albumform" />"><i class="fa fa-plus-square fa-fw"></i>Â  Add Album</a>
+          <a class="w3-padding w3-dark-grey" href="<c:url value="/interactions/interactionsform" />"><i class="fa fa-plus-square fa-fw"></i>  Add Interactions</a>
         </div>
       </div>
-      </sec:authorize>--%>
+      </sec:authorize>
+      <sec:authorize access="hasRole('ROLE_ADMIN')">
+        <div class="w3-dropdown-hover">
+             <a href="<c:url value="/users/viewusers" />" class="w3-padding"><i class="fa fa-microphone fa-fw"></i>  Users  <i class="fa fa-caret-down"></i></a>
+        <div class="w3-dropdown-content w3-white w3-card-4">
+          <a class="w3-padding w3-dark-grey" href="<c:url value="/users/usersform" />"><i class="fa fa-plus-square fa-fw"></i>  Add User</a>
+        </div>
+        </div>
+      </sec:authorize>
       
       <!--
-      <a href="#" class="w3-padding"><i class="fa fa-eye fa-fw"></i>Â  Views</a>
-      <a href="#" class="w3-padding"><i class="fa fa-users fa-fw"></i>Â  Traffic</a>
-      <a href="#" class="w3-padding"><i class="fa fa-bullseye fa-fw"></i>Â  Geo</a>
-      <a href="#" class="w3-padding"><i class="fa fa-diamond fa-fw"></i>Â  Orders</a>
-      <a href="#" class="w3-padding"><i class="fa fa-bell fa-fw"></i>Â  News</a>
-      <a href="#" class="w3-padding"><i class="fa fa-bank fa-fw"></i>Â  General</a>
-      <a href="#" class="w3-padding"><i class="fa fa-history fa-fw"></i>Â  History</a>
+      <a href="#" class="w3-padding"><i class="fa fa-eye fa-fw"></i>  Views</a>
+      <a href="#" class="w3-padding"><i class="fa fa-users fa-fw"></i>  Traffic</a>
+      <a href="#" class="w3-padding"><i class="fa fa-bullseye fa-fw"></i>  Geo</a>
+      <a href="#" class="w3-padding"><i class="fa fa-diamond fa-fw"></i>  Orders</a>
+      <a href="#" class="w3-padding"><i class="fa fa-bell fa-fw"></i>  News</a>
+      <a href="#" class="w3-padding"><i class="fa fa-bank fa-fw"></i>  General</a>
+      <a href="#" class="w3-padding"><i class="fa fa-history fa-fw"></i>  History</a>
       -->
-      <a href="#" onclick="logoutFormSubmit();" class="w3-padding"><i class="fa fa-sign-out fa-fw"></i>Â  Logout</a><br><br>
+      <a href="#" onclick="logoutFormSubmit();" class="w3-padding"><i class="fa fa-sign-out fa-fw"></i>  Logout</a><br><br>
       
       <form action="<c:url value="/j_spring_security_logout" />" method="post" id="logoutForm">
         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
@@ -85,4 +86,4 @@
     <div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
 
     <!-- !PAGE CONTENT! -->
-    <div class="w3-main" style="margin-left:300px;margin-top:43px;"/>
+    <div class="w3-main" style="margin-left:300px;margin-top:43px;">

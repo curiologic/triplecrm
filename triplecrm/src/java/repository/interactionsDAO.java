@@ -33,9 +33,9 @@ public class interactionsDAO {
     }
 
     public int save(interactions interactions){
-        String sql = "INSERT INTO interactions (idinteractions,Time_Of_Contact, In_Person, Phone_call, Email,  Conference_Call) values(?, ?)";
+        String sql = "INSERT INTO interactions (TimeOfContact, InPerson, Phone, Email,  ConferenceCall) values(?, ?, ?, ?, ?)";
 
-        Object[] values = {interactions.getIdinteractions(), interactions.getTime_Of_Contact(),interactions.isIn_Person(), interactions.isPhone_call(), interactions.isEmail(), interactions.isConference_Call()};
+        Object[] values = { interactions.getTimeOfContact(),interactions.isInPerson(), interactions.isPhone(), interactions.isEmail(), interactions.isConferenceCall()};
         
         logger.info("interactions DAO save values: " + values);
 
@@ -43,9 +43,9 @@ public class interactionsDAO {
     }
 
     public int update(interactions interactions){
-        String sql = "UPDATE interactions SET Time_Of_Contact=? WHERE Idinteratcions = ?";
+        String sql = "UPDATE interactions SET TimeOfContact=?,InPerson=?, Phone=?, Email=?, ConferenceCall=?  WHERE idinteractions = ?";
 
-        Object[] values = {interactions.getIdinteractions(), interactions.getTime_Of_Contact(), interactions.isIn_Person(), interactions.isPhone_call(), interactions.isPhone_call(), interactions.isEmail(), interactions.isConference_Call()};
+        Object[] values = {interactions.getTimeOfContact(), interactions.isInPerson(), interactions.isPhone(), interactions.isEmail(), interactions.isConferenceCall()};
 
         return template.update(sql,values);
     }
@@ -63,23 +63,23 @@ public class interactionsDAO {
             public interactions mapRow(ResultSet rs,int row) throws SQLException{
                 interactions it = new interactions();
                 it.setIdinteractions(rs.getInt("Idinteractions"));
-                it.setTime_Of_Contact(rs.getInt("Time_Of_Contact"));
-                it.setIn_Person(true);
-                it.setPhone_call(true);
-                it.setEmail(true);
-                it.setConference_Call(true);
+                it.setTimeOfContact(rs.getInt("TimeOfContact"));
+                it.setInPerson(rs.getBoolean("InPerson"));
+                it.setPhone(rs.getBoolean("Phone"));
+                it.setEmail(rs.getBoolean("Email"));
+                it.setConferenceCall(rs.getBoolean("ConfereCall"));
                 return it;
             }
         });
     }
 
-    public interactions getinteractionsById(int id){
-        String sql = "SELECT Idinteractions AS id, name, idclients FROM interactions WHERE idinteractions = ?";
-        return template.queryForObject(sql,new Object[]{id},new BeanPropertyRowMapper<interactions>(interactions.class));
+    public interactions getinteractionsById(int idinteractions){
+        String sql = "SELECT Idinteractions AS id, name, idclient FROM interactions WHERE idinteractions = ?";
+        return template.queryForObject(sql,new Object[]{idinteractions},new BeanPropertyRowMapper<interactions>(interactions.class));
     }
 
     public List<interactions> getinteractionsByPage(int start, int total){
-        String sql = "SELECT interactions.idinteractions, interactions.Time_Of_Contact, client.idclients, client.Name " +
+        String sql = "SELECT interactions.idinteractions, interactions.TimeOfContact, client.idclient, client.Name " +
                 "FROM interactions AS interactions " +
                 "INNER JOIN client AS client ON client.idclient = interactions.idclient " +
                 "ORDER BY client.Name, interactions.idinteractions " + 
@@ -87,8 +87,8 @@ public class interactionsDAO {
         return template.query(sql,new RowMapper<interactions>(){
             public interactions mapRow(ResultSet rs,int row) throws SQLException{
                 interactions it = new interactions();
-                it.setIdinteractions(1);
-                it.setTime_Of_Contact(2);
+                it.setIdinteractions(rs.getInt(1));
+                it.setTimeOfContact(rs.getInt(2));
                 
                 clients client = new clients();
                 client.setIdclient(rs.getInt(3));

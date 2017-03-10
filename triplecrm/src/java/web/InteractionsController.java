@@ -29,11 +29,11 @@ import repository.interactionsDAO;
  */
 @Controller
 public class InteractionsController {
-  //   @Autowired
+     @Autowired
     interactionsDAO dao;
     
     @Autowired
-    clientsDAO cdao = new clientsDAO();
+    clientsDAO cdao;
     
     private static final Logger logger = Logger.getLogger(InteractionsController.class.getName());
 
@@ -45,13 +45,13 @@ public class InteractionsController {
         return new ModelAndView("interactionsform","command",interactions);
     }
     
-    @RequestMapping("/interactions/interactionsform/{id}")
+    @RequestMapping("/interactions/interactionsform/{idinteractions}")
     public ModelAndView showformWithClient(@PathVariable int id){
-      //  clients client = cdao.getclientsById(id);
+        clients client = cdao.getclientsById(id);
         
         interactions interactions = new interactions();
         interactions.setIdclient(id);
-     //   interactions.setClient( client);
+        interactions.setClient( client);
         
        interactions.setClients(dao.getclientsMap());
         
@@ -111,7 +111,7 @@ public class InteractionsController {
         return new ModelAndView("viewinteractions", context);
     }
 
-    @RequestMapping(value = "/interactiions/editinteracions/{id}")
+    @RequestMapping(value = "/interactions/editinteractions/{idinteractions}")
     public ModelAndView edit(@PathVariable int id){
        interactions interactions = dao.getinteractionsById(id);
         
@@ -121,8 +121,8 @@ public class InteractionsController {
     }
     
     @RequestMapping(value = "/interactions/editsave",method = RequestMethod.POST)
-    public ModelAndView editsave(@ModelAttribute("interactions") interactions album, HttpServletRequest request){
-        int r = dao.update(album);
+    public ModelAndView editsave(@ModelAttribute("interactions") interactions interactions, HttpServletRequest request){
+        int r = dao.update(interactions);
         
         Message msg = null;
         if (r == 1) {
@@ -137,7 +137,7 @@ public class InteractionsController {
         return new ModelAndView("redirect:/interactions/viewinteractions");
     }
 
-    @RequestMapping(value = "/interactions/deleteinteraction/{id}",method = RequestMethod.GET)
+    @RequestMapping(value = "/interactions/deleteinteractions/{idinteractions}",method = RequestMethod.GET)
     public ModelAndView delete(@PathVariable int id, HttpServletRequest request){
         int r = dao.delete(id);
         
@@ -146,7 +146,7 @@ public class InteractionsController {
             msg = new Message(Message.Level.INFO, "Interaction has been successfully deleted");
         }
         else {
-            msg = new Message(Message.Level.ERROR, "Delete interactionfailed");
+            msg = new Message(Message.Level.ERROR, "Delete interaction failed");
         }
         
         request.getSession().setAttribute("message", msg);

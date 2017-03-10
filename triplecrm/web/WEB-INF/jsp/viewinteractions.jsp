@@ -3,9 +3,12 @@
     Created on : Feb 8, 2017, 6:11:30 PM
     Author     : xulix
 --%>
-
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>    
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>  
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+ <%@ include file="theme/header.jsp" %> 
 <!DOCTYPE html>
+
 <html>
     
      <title>Triplecrm</title>
@@ -35,23 +38,30 @@
 
   <table class="w3-table w3-striped w3-bordered w3-border w3-hoverable w3-white">  
     <tr>
-      <th>Title</th>
+      <th>InteractionsID</th>
+      <th>Time Of Contact</th>
       <th>Client</th>
       <th>Phone</th>
       <th>Email</th>
       <th>in Person</th>
       <th>Conference Call</th>
-      <th>Time Of Contact</th>
+     
       <th>Action</th>
     </tr>  
 
     <c:forEach var="interactions" items="${list}">   
       <tr>  
         <td>${interactions.idinteractions}</td>
+        <td>${interactions.timeOfContact}</td>
         <td>${interactions.clients.name}</td>
+        <td>${interactions.phone}</td>
+        <td>${interactions.email}</td>
+        <td>${interactions.inPerson}</td>
+        <td>${interactions.conferenceCall}</td>
+             
         <td>
-          <a href=<c:url value="/interactions/editinteractions/${interactions.idinteractions}" />"><button class="w3-btn w3-round w3-blue">Edit</button></a>
-          <a href=<c:url value="/interactions/deleteinteractions/${interactions.idinteractions}" />"><button class="w3-btn w3-round w3-red">Delete</button></a>
+         <a href="<c:url value="/interactions/editinteractions/${interactions.idinteractions}" />"><button class="w3-btn w3-round w3-blue">Edit</button></a>
+          <a href="<c:url value="/interactions/deleteinteractions/${interactions.idinteractions}" />"><button class="w3-btn w3-round w3-red">Delete</button></a>
         </td>  
       </tr>  
     </c:forEach>  
@@ -60,10 +70,10 @@
   <div class="w3-padding-8">
     <ul class="w3-pagination">
       <c:forEach begin="1" end="${pages}" varStatus="p">  
-        <li><a class="<c:if test="${p.index eq page}>w3-green</c:if>" href="<c:url value="/interactions/viewinteractions/${p.index}" />">${p.index}</a></li>
-      </c:forEach>
+       <li><a class="<c:if test="${p.index eq page}">w3-green</c:if>" href="<c:url value="/interactions/viewinteractions/${p.index}" />">${p.index}</a></li> </c:forEach>
     </ul>
   </div>
     
   </div>
 </html
+<%@ include file="theme/footer.jsp" %> 

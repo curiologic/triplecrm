@@ -6,10 +6,10 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>    
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>  
 
-<%--  <%@ include file="theme/header.jsp" %> --%>
+  <%@ include file="theme/header.jsp" %> 
 
 <html>
-<title>W3.CSS Template</title>
+<title>Clients</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
@@ -31,8 +31,7 @@
 
     <form:form method="post" action="save" cssClass="w3-container">
       <div class="w3-padding-8">
-        <label><b>ID</b></label>
-        <form:input path="idclient" cssClass="w3-input w3-border" /> 
+       
         <label><b>Name</b></label>
         <form:input path= "name" cssClass="w3-input w3-border"  />
          <label><b>Address</b></label>
@@ -40,7 +39,7 @@
          <label><b>City</b></label>
        <form:input path="city" cssClass="w3-input w3-border"  />
         <label><b>State</b></label>
-       <form:input path="State" cssClass="w3-input w3-border"  />
+        <form:input path="state" cssClass="w3-input w3-border"  />
         <label><b>Country</b></label>
        <form:input path="State" cssClass="w3-input w3-border"  />
         <label><b>Postal Code</b></label>
@@ -66,3 +65,5 @@
   </div>
 
 </div>
+    
+    <%@ include file="theme/footer.jsp" %>

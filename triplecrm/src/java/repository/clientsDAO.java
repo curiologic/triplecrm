@@ -24,18 +24,18 @@ public class clientsDAO {
         this.template = template;
     }
      public int save(clients client){
-        String sql = "INSERT INTO client (idclient,Name, Address, City, State, Country, PostalCode, PhoneNumber, Email,  prospect, Active, FormerClient, Comments)"
+        String sql = "INSERT INTO client (idclient,Name, Address, City, State, Country, postalCode, phoneNumber, Email,  prospect, Active, formerClient, Comments)"
                +  " values(?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
-        Object[] values = {client.getIdclient(), client.getName(),client.getAddress(), client.getCity(),client.getState(),  client.getCountry(), client.getPostalCode(),  client.getPhoneNumber(), client.getEmail(), client.getProspect(), client.getActive(), client.getFormerClient(), client.getComments()};
+        Object[] values = {client.getIdclient(), client.getName(), client.getAddress(), client.getCity(), client.getState(),  client.getCountry(), client.getpostalCode(),  client.getphoneNumber(), client.getEmail(), client.getProspect(), client.getActive(), client.getformerClient(), client.getComments()};
 
         return template.update(sql,values);
     }
 
     public int update(clients client){
-        String sql = "UPDATE client SET idclient=?,Name=?, Address=?, City=?, State=?, Country=?, PostalCode=?, PhoneNumber=?, Email=?, prospect=?, Email=?, Active=?, FormerClient=?, Comments=?, WHERE idclient = ?";
+        String sql = "UPDATE client SET idclient=?,Name=?, Address=?, City=?, State=?, Country=?, postalCode=?, phoneNumber=?, Email=?, prospect=?, Email=?, Active=?, formerClient=?, Comments=?, WHERE idclient = ?";
 
-        Object[] values = {client.getIdclient(), client.getName(),client.getAddress(), client.getCity(),client.getState(),  client.getCountry(), client.getPostalCode(),  client.getPhoneNumber(), client.getEmail(), client.getProspect(), client.getActive(), client.getFormerClient(), client.getComments()};
+        Object[] values = {client.getIdclient(), client.getName(), client.getAddress(), client.getCity(), client.getState(),  client.getCountry(), client.getpostalCode(),  client.getphoneNumber(), client.getEmail(), client.getProspect(), client.getActive(), client.getformerClient(), client.getComments()};
 
         return template.update(sql,values);
     }
@@ -56,14 +56,14 @@ public class clientsDAO {
                 c.setName(rs.getString("Name"));
                 c.setAddress(rs.getString("Address"));
                 c.setCity(rs.getString("City"));
-                c.setPostalCode(rs.getString("PostalCode"));
+                c.setpostalCode(rs.getString("PostalCode"));
                 c.setState(rs.getString("State"));
                 c.setProspect(rs.getString("Prospect"));
                 c.setCountry(rs.getString("Country"));
-                c.setPhoneNumber(rs.getInt("PhoneNumber"));
+                c.setphoneNumber(rs.getInt("PhoneNumber"));
                 c.setEmail(rs.getString("Email"));
                 c.setActive(rs.getBoolean("Active"));
-                c.setFormerClient(rs.getBoolean("FormerClient"));
+                c.setformerClient(rs.getBoolean("FormerClient"));
                 c.setComments(rs.getString("Comments"));
                 return c;
             }
@@ -84,14 +84,14 @@ public class clientsDAO {
                 c.setName(rs.getString(2));
                 c.setAddress(rs.getString("Address"));
                 c.setCity(rs.getString("City"));
-                c.setPostalCode(rs.getString("PostalCode"));
+                c.setpostalCode(rs.getString("PostalCode"));
                 c.setState(rs.getString("State"));
                 c.setProspect(rs.getString("Prospect"));
                 c.setCountry(rs.getString("Country"));
-                c.setPhoneNumber(rs.getInt("PhoneNumber"));
+                c.setphoneNumber(rs.getInt("PhoneNumber"));
                 c.setEmail(rs.getString("Email"));
                 c.setActive(rs.getBoolean("Active"));
-                c.setFormerClient(rs.getBoolean("FormerClient"));
+                c.setformerClient(rs.getBoolean("FormerClient"));
                 c.setComments(rs.getString("Comments"));
                 return c;
             }

@@ -6,6 +6,7 @@
 package crm;
 
 import java.io.Serializable;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 /**
@@ -14,14 +15,14 @@ import java.util.Map;
  */
 public class interactions implements Serializable  {
     private int idinteractions;
-    private boolean Phone_call;
-    private boolean In_Person;
+    private boolean Phone;
+    private boolean InPerson;
     private boolean Email;
-    private boolean Conference_Call;
-    private int Time_Of_Contact;
+    private boolean ConferenceCall;
+    private int TimeOfContact;
     private int idclient;
     private clients client;
-
+  
     public int getIdclient() {
         return idclient;
     }
@@ -60,20 +61,20 @@ public class interactions implements Serializable  {
         this.idinteractions = idinteractions;
     }
 
-    public boolean isPhone_call() {
-        return Phone_call;
+    public boolean isPhone() {
+        return Phone;
     }
 
-    public void setPhone_call(boolean Phone_call) {
-        this.Phone_call = Phone_call;
+    public void setPhone(boolean Phonecall) {
+        this.Phone = Phonecall;
     }
 
-    public boolean isIn_Person() {
-        return In_Person;
+    public boolean isInPerson() {
+        return InPerson;
     }
 
-    public void setIn_Person(boolean In_Person) {
-        this.In_Person = In_Person;
+    public void setInPerson(boolean InPerson) {
+        this.InPerson = InPerson;
     }
 
     public boolean isEmail() {
@@ -84,26 +85,32 @@ public class interactions implements Serializable  {
         this.Email = Email;
     }
 
-    public boolean isConference_Call() {
-        return Conference_Call;
+    public boolean isConferenceCall() {
+        return ConferenceCall;
     }
 
-    public void setConference_Call(boolean Conference_Call) {
-        this.Conference_Call = Conference_Call;
+    public void setConferenceCall(boolean ConferenceCall) {
+        this.ConferenceCall = ConferenceCall;
     }
 
-    public int getTime_Of_Contact() {
-        return Time_Of_Contact;
+    public int getTimeOfContact() {
+        return TimeOfContact;
     }
 
-    public void setTime_Of_Contact(int Time_Of_Contact) {
-        this.Time_Of_Contact = Time_Of_Contact;
+    public void setTimeOfContact(int TimeOfContact) {
+        this.TimeOfContact = TimeOfContact;
     }
-
+  public Map<Integer,String> getclients() {
+        return this.clients;
+    }
+    
+    public void setClient(Map<Integer,String> clients) {
+        this.client = client;
+    }
    public String toString() {
         StringBuffer buffer = new StringBuffer();
         buffer.append("ID: " + this.idinteractions + ";");
-        buffer.append("Time_Of_Contact: " + Time_Of_Contact);
+        buffer.append("TimeOfContact: " + TimeOfContact);
         return buffer.toString();
     }
     

@@ -6,10 +6,10 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>    
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>    
 
-<%-- <%@ include file="theme/header.jsp" %>--%>
+ <%@ include file="theme/header.jsp" %>
 
 <html>
-<title>W3.CSS Template</title>
+<title>Edit Client</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
@@ -29,7 +29,7 @@
     </div>
 
     <form:form method="POST" action="/triplecrm/clients/editsave" cssClass="w3-container">
-      <form:hidden path="id"  />
+      <form:hidden path="idclient"  />
       
       <div class="w3-padding-8">
         <label><b>Name</b></label>
@@ -62,8 +62,8 @@
       </div>
       
        <div class="w3-padding-8">
-        <label><b>Zip Code</b></label>
-        <form:input path="zip" cssClass="w3-input w3-border"  />
+        <label><b>Postal Code</b></label>
+        <form:input path="postalCode" cssClass="w3-input w3-border"  />
       </div>
       
        <div class="w3-padding-8">
@@ -73,12 +73,12 @@
       
        <div class="w3-padding-8">
         <label><b>Former Clients</b></label>
-        <form:input path="former_clients" cssClass="w3-input w3-border"  />
+        <form:input path="formerClient" cssClass="w3-input w3-border"  />
       </div>
       
        <div class="w3-padding-8">
         <label><b>Prospects</b></label>
-        <form:input path="prospects" cssClass="w3-input w3-border"  />
+        <form:input path="prospect" cssClass="w3-input w3-border"  />
       </div>
       
        <div class="w3-padding-8">
@@ -94,4 +94,4 @@
   </div>
 </div>
 
-<%-- <%@ include file="theme/footer.jsp" %> --%>
+ <%@ include file="theme/footer.jsp" %> 

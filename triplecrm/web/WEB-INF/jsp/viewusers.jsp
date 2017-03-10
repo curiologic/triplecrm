@@ -1,5 +1,5 @@
 <%-- 
-    Document   : viewclients
+    Document   : viewusers
     Created on : Jan 11, 2017, 7:45:10 PM
     Author     : xulix
 --%>
@@ -24,7 +24,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
   <header class="w3-container" style="padding-top:22px">
-    <h5><b><i class="fa fa-dashboard"></i> Clients</b></h5>
+    <h5><b><i class="fa fa-dashboard"></i> Users</b></h5>
   </header>
 
   <div class="w3-row-padding w3-margin-bottom">
@@ -45,38 +45,26 @@
     <tr>
       <th>ID</th>
       <th>Name</th>
-      <th>Address</th>
-      <th>City</th>
-      <th>State</th>
-      <th>Country</th>
-      <th>Email</th>
-      <th>Prospect</th>
-      <th>Active</th>
-      <th>Comments</th>
+      <th>Password</th>
+      <th>Enabled</th>
+     <th>Role</th>
      
       <th>Action</th>
     </tr>  
 
-    <c:forEach var="clients" items="${list}">   
+    <c:forEach var="users" items="${list}">   
       <tr>  
-        <td>${clients.idclient}</td>  
-        <td>${clients.name}</td> 
-        <td>${clients.address}</td> 
-        <td>${clients.city}</td> 
-        <td>${clients.state}</td>
-        <td>${clients.country}</td>
-        <td>${clients.email}</td>
-        <td>${clients.prospect}</td>
-        <td>${clients.active}</td>
-        <td>${clients.comments}</td>
+        <td>${users.idusers}</td>  
+        <td>${users.userName}</td> 
+        <td>${users.password}</td> 
+        <td>${users.enabled}</td>
+       <td>${users.roles}</td> 
         
         
         <td>
-          <a href="<c:url value="/clients/editclients/${clients.idclient}" />"><button class="w3-btn w3-round w3-blue">Edit</button></a>
-          <a href="<c:url value="/clients/deleteclients/${clients.idclient}" />"><button class="w3-btn w3-round w3-red">Delete</button></a>
-          <a href="<c:url value="/interactions/interactionsform/${clients.idclient}" />"><button class="w3-btn w3-round w3-green">Add Interactions</button></a>
-         
-        </td>  
+          <a href="<c:url value="/users/editusers/${users.idusers}" />"><button class="w3-btn w3-round w3-blue">Edit</button></a>
+          <a href="<c:url value="/users/deleteusers/${users.idusers}" />"><button class="w3-btn w3-round w3-red">Delete</button></a>
+          </td>  
       </tr>  
     </c:forEach>  
   </table> 
@@ -84,7 +72,7 @@
   <div class="w3-padding-8">
     <ul class="w3-pagination">
       <c:forEach begin="1" end="${pages}" varStatus="p">  
-        <li><a class="<c:if test="${p.index eq page}">w3-green</c:if>" href="<c:url value="/clients/viewclients/${p.index}" />">${p.index}</a></li>
+        <li><a class="<c:if test="${p.index eq page}">w3-green</c:if>" href="<c:url value="/users/viewusers/${p.index}" />">${p.index}</a></li>
       </c:forEach>
     </ul>
   </div>

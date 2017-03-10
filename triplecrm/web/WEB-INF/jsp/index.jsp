@@ -13,7 +13,7 @@
   <c:url value="/j_spring_security_logout" var="logoutUrl" />
   
 
- <%-- <%@ include file="theme/header.jsp" %> --%>
+  <%@ include file="theme/header.jsp" %> 
 
   <header class="w3-container" style="padding-top:22px">
     <h5><b><i class="fa fa-dashboard"></i> Dashboard</b></h5>
@@ -23,7 +23,7 @@
 
   </div>
   
- <%-- <%@ include file="theme/footer.jsp" %> --%>
+  <%@ include file="theme/footer.jsp" %> 
 </sec:authorize>
 
 <sec:authorize access="isAnonymous()">
